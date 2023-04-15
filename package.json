@@ -1,0 +1,24 @@
+{
+  "name": "one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "myfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon myfile.js",
+    "start-server": "node myfile.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sampath11790/nodestart.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sampath11790/nodestart/issues"
+  },
+  "homepage": "https://github.com/sampath11790/nodestart#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
