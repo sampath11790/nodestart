@@ -2,31 +2,10 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const routes = express.Router();
+const productController = require("../controller/product");
+routes.get("/add-product", productController.getAddProduct);
 
-routes.get("/add-product", (req, res, next) => {
-  console.log("middleware two");
-
-  return fs.readFile("user.txt", "utf8", (err, data) => {
-    if (err) {
-      data = "inbox is empty  @:)";
-      console.log(err);
-    }
-    res.sendFile(path.join(__dirname, "../", "view", "admin.html"));
-  });
-});
-
-routes.post("/product", (req, res, next) => {
-  console.log(req.body);
-  fs.writeFile(
-    "user.txt",
-    `${req.body.name}==>:${req.body.message} # ,`,
-    { flag: "a" },
-    (err) => {
-      err ? console.log(err) : res.redirect("/admin/add-product");
-    }
-  );
-  //   res.redirect("/");
-});
+routes.post("/product", productController.postProducts);
 
 module.exports = routes;
 
