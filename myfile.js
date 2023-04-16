@@ -3,7 +3,29 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
+const AdminRoute = require("./routes/admin");
+const ShopRoute = require("./routes/shop");
+
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use("/", (req, res, next) => {
+  console.log("middleware one");
+  next();
+});
+
+app.use("/admin", AdminRoute);
+app.use(ShopRoute);
+
+//notfound page
+app.use((req, res, next) => {
+  res.status(404).send("<h1  style=color:red>Page Not Found</h1>");
+});
+app.listen(3000);
+
+//
+
+//body-parser its creates middleware and process request
+// app.use(bodyParser.urlencoded({ extended: false }));
 // custom moudle
 // const routes = require("./Router");
 // console.log(routes.information);
@@ -12,32 +34,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // const server = http.createServer(app);
 
 //add middleware
-app.use("/", (req, res, next) => {
-  console.log("middleware one");
-  next();
-});
+// app.use("/", (req, res, next) => {
+//   console.log("middleware one");
+//   next();
+// });
 
-app.use("/add-product", (req, res, next) => {
-  console.log("middleware two");
-  res.send(
-    "<form action=/product method=POST ><input type=text name=firstname ></input><br/><input type=text name=lastname ></input><br/><button>Add</button></form>"
-  );
-  // res.send({ name: "sam" });
-});
+// app.use("/add-product", (req, res, next) => {
+//   console.log("middleware two");
+//   res.send(
+//     "<form action=/product method=POST ><input type=text name=firstname ></input><br/><input type=text name=lastname ></input><br/><button>Add</button></form>"
+//   );
+//   // res.send({ name: "sam" });
+// });
 
-app.use("/product", (req, res, next) => {
-  console.log("middleware two");
-  console.log("body data===>", req.body);
-  res.send("<h1>hi am express product page </h1>");
-  // res.send({ name: "sam" });
-});
+// app.use(AdminRoute);
 
-app.use("/", (req, res, next) => {
-  console.log("middleware three");
-  res.send("<h1>hi this home page </h1>");
-});
+// app.use(ShopRoute);
 //express creates server for us
-app.listen(3000);
+// app.listen(3000);
 
 // by create venilla node js method
 // server.listen(3000, () => {
