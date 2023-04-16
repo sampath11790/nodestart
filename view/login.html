@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="main-headr-container">
+      <nav class="main-headr-container-nav">
+        <ul class="main-headr-container-ul">
+          <li><a href="/login">login</a></li>
+          <li><a href="/admin/add-product">Add product</a></li>
+          <li><a href="/admin/product">product</a></li>
+          <li><a href="/contactus">contactus</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main-body">
+      `
+      <form onsubmit="" action="/admin/add-product" method="get">
+        <input type="text" id="firstname" name="firstname" /><br />
+
+        <button type="submit">Login</button>
+      </form>
+      <script>
+        let form = document.getElementsByTagName("form");
+        form[0].addEventListener("submit", storename);
+        function storename(e) {
+          // e.preventDefault();
+          let firstname = document.getElementById("firstname").value;
+
+          localStorage.setItem("name", firstname);
+        }
+      </script>
+    </main>
+  </body>
+</html>

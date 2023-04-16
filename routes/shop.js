@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require("fs");
+const path = require("path");
 const routes = express.Router();
 routes.get("/", (req, res, next) => {
   console.log("middleware three");
@@ -7,7 +8,8 @@ routes.get("/", (req, res, next) => {
     if (err) {
       console.log(err);
     }
-    res.send(data);
+    res.sendFile(path.join(__dirname, "../", "view", "shop.html"));
+    // res.send(data);
   });
   // res.send(`<h1>hi this home page </h1>`);
   // res.send(`<h1>hi this home page </h1>`);
