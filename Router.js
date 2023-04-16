@@ -80,3 +80,6 @@ module.exports = {
 
 // exports.myhandler=requestHandler;
 // exports.information= "this is my route handler function";
+
+//redirect
+//setHeader("Location","url")
